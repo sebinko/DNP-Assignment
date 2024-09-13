@@ -39,8 +39,7 @@ public class PostInMemoryRepository : IPostRepository
         
         post.UpdatedAt = DateTime.Now;
 
-        posts.Remove(existingPost);
-        posts.Add(post);
+        posts[posts.FindIndex(p => p.Id == post.Id)] = post;
         
         return Task.FromResult(post);
     }

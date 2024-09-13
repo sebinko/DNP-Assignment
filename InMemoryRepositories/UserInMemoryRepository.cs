@@ -37,8 +37,7 @@ public class UserInMemoryRepository : IUserRepository
         
         user.UpdatedAt = DateTime.Now;
         
-        users.Remove(existingUser);
-        users.Add(user);
+        users[users.FindIndex(u => u.UserName == user.UserName)] = user;
         
         return Task.FromResult(user);
     }

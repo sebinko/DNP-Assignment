@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <Folder Include="UI\ManageComments\" />
+      <Folder Include="UI\ManageLikes\" />
       <Folder Include="UI\ManageModerators\" />
       <Folder Include="UI\ManageSubforums\" />
     </ItemGroup>

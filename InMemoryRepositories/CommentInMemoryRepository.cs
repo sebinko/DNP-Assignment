@@ -55,8 +55,7 @@ public class CommentInMemoryRepository: ICommentRepository
         
         comment.UpdatedAt = DateTime.Now;
 
-        comments.Remove(existingComment);
-        comments.Add(comment);
+        comments[comments.FindIndex(c => c.Id == comment.Id)] = comment;
         
         return Task.FromResult(comment);
     }

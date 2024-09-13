@@ -26,6 +26,8 @@ public class CliApp
             { "4", new DeleteUserView(userRepository) },
             { "5", new ListPostView(postRepository) },
             { "6", new CreatePostView(postRepository, userRepository, subforumRepository) },
+            { "7", new UpdatePostView(postRepository, userRepository, subforumRepository) },
+            { "8", new DeletePostView(postRepository) },
             { "10", new ExitView() }
         };
     }

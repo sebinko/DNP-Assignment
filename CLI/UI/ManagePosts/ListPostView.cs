@@ -13,7 +13,6 @@ public class ListPostView(IPostRepository postRepository) : IView
 
         foreach (var post in posts)
         {
-            // write is in one line
             PrettyConsole.WriteSuccess(
                 $"Id: {post.Id}, Title: {post.Title}, Body: {post.Body}, UserId: {post.UserId}, SubforumId: {post.SubforumId}");
         }

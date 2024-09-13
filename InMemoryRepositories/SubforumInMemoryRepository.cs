@@ -37,8 +37,7 @@ public class SubforumInMemoryRepository : ISubforumRepository
         
         subforum.UpdatedAt = DateTime.Now;
 
-        subforums.Remove(existingSubforum);
-        subforums.Add(subforum);
+        subforums[subforums.FindIndex(s => s.Id == subforum.Id)] = subforum;
         
         return Task.FromResult(subforum);
     }

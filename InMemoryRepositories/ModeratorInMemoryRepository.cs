@@ -30,8 +30,7 @@ public class ModeratorInMemoryRepository : IModeratorRepository
             throw new Exception("Moderator not found");
         }
         
-        moderators.Remove(existingModerator);
-        moderators.Add(moderator);
+        moderators[moderators.FindIndex(m => m.UserId == moderator.UserId && m.SubforumId == moderator.SubforumId)] = moderator;
         
         return Task.FromResult(moderator);
     }

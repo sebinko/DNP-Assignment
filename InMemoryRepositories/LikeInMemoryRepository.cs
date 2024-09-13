@@ -45,8 +45,7 @@ public class LikeInMemoryRepository : ILikeRepository
         
         like.UpdatedAt = DateTime.Now;
 
-        likes.Remove(existingLike);
-        likes.Add(like);
+        likes[likes.FindIndex(l => l.Id == like.Id)] = like;
         
         return Task.FromResult(like);
     }
