@@ -13,6 +13,7 @@ public class SubforumInMemoryRepository : ISubforumRepository
         {
             Title= "Subforum 1",
             Description = "Description 1",
+            OwnerUserId = 1
         });
     }
     

@@ -14,7 +14,7 @@ public class ListPostView(IPostRepository postRepository) : IView
         foreach (var post in posts)
         {
             PrettyConsole.WriteSuccess(
-                $"Id: {post.Id}, Title: {post.Title}, Body: {post.Body}, UserId: {post.UserId}, SubforumId: {post.SubforumId}");
+                $"Id: {post.Id}, Title: {post.Title}, Body: {post.Body}, UserId: {post.UserId}, SubforumId: {post.SubforumId}, CreatedAt: {post.CreatedAt}, UpdatedAt: {post.UpdatedAt}");
         }
     }
 }
