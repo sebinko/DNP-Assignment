@@ -59,6 +59,12 @@ public class UserInMemoryRepository : IUserRepository
     public Task<User> GetByIdAsync(int id)
     {
         var user = users.FirstOrDefault(u => u.Id == id);
+        
+        if (user == null)
+        {
+            throw new Exception("User not found");
+        }
+        
         return Task.FromResult(user);
     }
     
