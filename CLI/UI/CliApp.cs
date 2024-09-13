@@ -10,26 +10,9 @@ public class CliApp
 {
     private readonly Dictionary<string, IView> _views;
 
-    public CliApp(
-        ICommentRepository commentRepository,
-        ILikeRepository likeRepository,
-        IModeratorRepository moderatorRepository,
-        IPostRepository postRepository,
-        ISubforumRepository subforumRepository,
-        IUserRepository userRepository)
+    public CliApp(Dictionary<string, IView> views)
     {
-        _views = new Dictionary<string, IView>
-        {
-            { "1", new ListUserView(userRepository) },
-            { "2", new CreateUserView(userRepository) },
-            { "3", new UpdateUserView(userRepository) },
-            { "4", new DeleteUserView(userRepository) },
-            { "5", new ListPostView(postRepository) },
-            { "6", new CreatePostView(postRepository, userRepository, subforumRepository) },
-            { "7", new UpdatePostView(postRepository, userRepository, subforumRepository) },
-            { "8", new DeletePostView(postRepository) },
-            { "10", new ExitView() }
-        };
+        _views = views;
     }
 
     public async Task StartAsync()
