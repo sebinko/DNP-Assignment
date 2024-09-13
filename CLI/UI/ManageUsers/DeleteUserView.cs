@@ -9,7 +9,6 @@ public class DeleteUserView(IUserRepository userRepository) : IView
     {
         Console.Clear();
 
-
         try
         {
             PrettyConsole.WriteQuestion("Enter user id:");

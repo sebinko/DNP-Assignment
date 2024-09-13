@@ -1,3 +1,4 @@
+using CLI.UI.ManagePosts;
 using CLI.UI.ManageUsers;
 using CLI.UI.Menu;
 using CLI.UI.Utilities;
@@ -23,6 +24,8 @@ public class CliApp
             { "2", new CreateUserView(userRepository) },
             { "3", new UpdateUserView(userRepository) },
             { "4", new DeleteUserView(userRepository) },
+            { "5", new ListPostView(postRepository) },
+            { "6", new CreatePostView(postRepository, userRepository, subforumRepository) },
             { "10", new ExitView() }
         };
     }
@@ -64,7 +67,7 @@ public class CliApp
             PrettyConsole.WriteInfo($"{view.Key} - {viewName}");
         }
     }
-    
+
     private static string ParseViewName(string viewName)
     {
         if (viewName.EndsWith("View"))

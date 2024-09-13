@@ -11,12 +11,12 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\InMemoryRepositories\InMemoryRepositories.csproj" />
       <ProjectReference Include="..\RepositoryContracts\RepositoryContracts.csproj" />
+      <ProjectReference Include="..\Validation\Validation.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="UI\ManageComments\" />
       <Folder Include="UI\ManageModerators\" />
-      <Folder Include="UI\ManagePosts\" />
       <Folder Include="UI\ManageSubforums\" />
     </ItemGroup>
 

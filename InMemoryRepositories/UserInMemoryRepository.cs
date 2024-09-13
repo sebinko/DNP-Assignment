@@ -9,7 +9,7 @@ public class UserInMemoryRepository : IUserRepository
 
     public UserInMemoryRepository()
     {
-        this.AddAsync(new User
+        AddAsync(new User
         {
             UserName = "user1",
             Password = "password1",
