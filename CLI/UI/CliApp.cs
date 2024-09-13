@@ -1,5 +1,6 @@
 using CLI.UI.ManageUsers;
 using CLI.UI.Menu;
+using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI;
@@ -34,7 +35,7 @@ public class CliApp
         {
             PrintMenu();
 
-            Console.WriteLine("Enter your choice:");
+            PrettyConsole.WriteInfo("Enter your choice:");
 
             var choice = Console.ReadLine();
 
@@ -49,7 +50,8 @@ public class CliApp
             }
             else
             {
-                Console.WriteLine("Invalid choice");
+                Console.Clear();
+                PrettyConsole.WriteError($"{choice} - Invalid choice");
             }
         }
     }
@@ -59,7 +61,7 @@ public class CliApp
         foreach (var view in _views)
         {
             var viewName = ParseViewName(view.Value.GetType().Name);
-            Console.WriteLine($"{view.Key} - {viewName}");
+            PrettyConsole.WriteInfo($"{view.Key} - {viewName}");
         }
     }
     

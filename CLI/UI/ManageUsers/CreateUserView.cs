@@ -1,3 +1,4 @@
+using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
@@ -9,10 +10,10 @@ public class CreateUserView(IUserRepository userRepository) : IView
     {
         Console.Clear();
 
-        Console.WriteLine("Enter username:");
+        PrettyConsole.WriteQuestion("Enter username:");
         var userName = Console.ReadLine();
 
-        Console.WriteLine("Enter password:");
+        PrettyConsole.WriteQuestion("Enter password:");
         var password = Console.ReadLine();
 
         try
@@ -30,7 +31,7 @@ public class CreateUserView(IUserRepository userRepository) : IView
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error:{e.Message}");
+            PrettyConsole.WriteError($"Error:{e.Message}");
         }
     }
 }

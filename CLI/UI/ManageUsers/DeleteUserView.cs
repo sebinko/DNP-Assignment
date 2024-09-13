@@ -1,3 +1,4 @@
+using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManageUsers;
@@ -11,7 +12,7 @@ public class DeleteUserView(IUserRepository userRepository) : IView
 
         try
         {
-            Console.WriteLine("Enter user id:");
+            PrettyConsole.WriteQuestion("Enter user id:");
             
             var id = int.Parse(Console.ReadLine() ?? throw new Exception("Id cannot be null"));
             var user = await userRepository.GetByIdAsync(id);
@@ -20,7 +21,7 @@ public class DeleteUserView(IUserRepository userRepository) : IView
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error:{e.Message}");
+            PrettyConsole.WriteError($"Error:{e.Message}");
         }
     }
 }

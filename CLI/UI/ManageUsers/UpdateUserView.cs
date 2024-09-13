@@ -1,3 +1,4 @@
+using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManageUsers;
@@ -10,15 +11,15 @@ public class UpdateUserView(IUserRepository userRepository) : IView
 
         try
         {
-            Console.WriteLine("Enter user id:");
+            PrettyConsole.WriteQuestion("Enter user id:");
             var id = int.Parse(Console.ReadLine() ?? throw new Exception("Id cannot be null"));
             
             var user = await userRepository.GetByIdAsync(id);
 
-            Console.WriteLine("Enter new username:");
+            PrettyConsole.WriteQuestion("Enter new username:");
             var userName = Console.ReadLine();
 
-            Console.WriteLine("Enter new password:");
+            PrettyConsole.WriteQuestion("Enter new password:");
             var password = Console.ReadLine();
             
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
@@ -33,7 +34,7 @@ public class UpdateUserView(IUserRepository userRepository) : IView
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error:{e.Message}");
+            PrettyConsole.WriteError($"Error:{e.Message}");
         }
     }
 }

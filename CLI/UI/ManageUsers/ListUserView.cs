@@ -1,3 +1,4 @@
+using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManageUsers;
@@ -12,7 +13,7 @@ public class ListUserView(IUserRepository userRepository) : IView
 
         foreach (var user in users)
         {
-            Console.WriteLine(
+            PrettyConsole.WriteSuccess(
                 $"Id: {user.Id}, Username: {user.UserName}, Password: {user.Password}, CreatedAt: {user.CreatedAt}, UpdatedAt: {user.UpdatedAt}");
         }
 
