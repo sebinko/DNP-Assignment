@@ -37,7 +37,7 @@ public class CreateSubforumView(ISubforumRepository subforumRepository, IUserRep
             };
 
             await subforumRepository.AddAsync(subforum);
-            
+
             // TODO add this user as a moderator
 
             PrettyConsole.WriteSuccess("Subforum created successfully");

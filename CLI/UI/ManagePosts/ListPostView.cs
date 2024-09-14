@@ -10,7 +10,7 @@ public class ListPostView(IPostRepository postRepository) : IView
         try
         {
             Console.Clear();
-        
+
             var posts = postRepository.GetAll();
 
             PrettyConsole.PrintTable(posts.ToList(), Level.Success);

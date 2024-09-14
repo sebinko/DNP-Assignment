@@ -1,9 +1,6 @@
-using CLI.UI.ManagePosts;
-using CLI.UI.ManageUsers;
 using CLI.UI.Menu;
 using CLI.UI.Utilities;
 using ConsoleTables;
-using RepositoryContracts.Interfaces;
 
 namespace CLI.UI;
 
@@ -25,10 +22,7 @@ public class CliApp(Dictionary<string, IView> views)
             {
                 await view.Run();
 
-                if (view is ExitView)
-                {
-                    exit = true;
-                }
+                if (view is ExitView) exit = true;
             }
             else
             {
@@ -43,12 +37,11 @@ public class CliApp(Dictionary<string, IView> views)
         var table = new ConsoleTable("M", "E", "N", "U");
         table.Options.EnableCount = false;
         var views1 = views.ToList();
-        
-        for (int i = 0; i < views1.Count; i += 4)
+
+        for (var i = 0; i < views1.Count; i += 4)
         {
             var row = new List<string>();
-            for (int j = 0; j < 4; j++)
-            {
+            for (var j = 0; j < 4; j++)
                 if (i + j < views1.Count)
                 {
                     var view = views1[i + j];
@@ -59,28 +52,23 @@ public class CliApp(Dictionary<string, IView> views)
                 {
                     row.Add("");
                 }
-            }
+
             table.AddRow(row.ToArray());
         }
-        
+
         table.Write(Format.Minimal);
     }
 
     private static string ParseViewName(string viewName)
     {
-        if (viewName.EndsWith("View"))
-        {
-            viewName = viewName.Substring(0, viewName.Length - 4);
-        }
+        if (viewName.EndsWith("View")) viewName = viewName.Substring(0, viewName.Length - 4);
 
-        for (int i = 1; i < viewName.Length; i++)
-        {
+        for (var i = 1; i < viewName.Length; i++)
             if (char.IsUpper(viewName[i]))
             {
                 viewName = viewName.Insert(i, " ");
                 i++;
             }
-        }
 
         return viewName;
     }

@@ -3,7 +3,7 @@ using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManageSubforums;
 
-public class DeleteSubforumView (ISubforumRepository subforumRepository): IView
+public class DeleteSubforumView(ISubforumRepository subforumRepository) : IView
 {
     public async Task Run()
     {
@@ -21,7 +21,7 @@ public class DeleteSubforumView (ISubforumRepository subforumRepository): IView
             }
 
             var post = await subforumRepository.GetByIdAsync(id);
-            
+
             await subforumRepository.DeleteAsync(post);
 
             PrettyConsole.WriteSuccess("Subforum deleted successfully");
@@ -31,6 +31,4 @@ public class DeleteSubforumView (ISubforumRepository subforumRepository): IView
             PrettyConsole.WriteError(e.Message);
         }
     }
-    
-    
 }

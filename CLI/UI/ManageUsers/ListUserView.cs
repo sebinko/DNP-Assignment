@@ -21,7 +21,7 @@ public class ListUserView(IUserRepository userRepository) : IView
         {
             PrettyConsole.WriteError(exception.Message);
         }
-        
+
         return Task.CompletedTask;
     }
 }

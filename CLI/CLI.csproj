@@ -8,19 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-      <ProjectReference Include="..\InMemoryRepositories\InMemoryRepositories.csproj" />
-      <ProjectReference Include="..\RepositoryContracts\RepositoryContracts.csproj" />
-      <ProjectReference Include="..\Validation\Validation.csproj" />
+        <ProjectReference Include="..\Domain\Domain.csproj"/>
+        <ProjectReference Include="..\InMemoryRepositories\InMemoryRepositories.csproj"/>
+        <ProjectReference Include="..\RepositoryContracts\RepositoryContracts.csproj"/>
+        <ProjectReference Include="..\Validation\Validation.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UI\ManageComments\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="ConsoleTables" Version="2.6.1" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="ConsoleTables" Version="2.6.1"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
     </ItemGroup>
 
 </Project>

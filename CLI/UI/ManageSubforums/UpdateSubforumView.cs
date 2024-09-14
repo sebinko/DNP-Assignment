@@ -52,5 +52,4 @@ public class UpdateSubforumView(ISubforumRepository subforumRepository, IUserRep
             PrettyConsole.WriteError(e.Message);
         }
     }
-    
 }

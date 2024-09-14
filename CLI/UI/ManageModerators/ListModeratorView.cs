@@ -19,7 +19,7 @@ public class ListModeratorView(IModeratorRepository moderatorRepository) : IView
         {
             PrettyConsole.WriteError(e.Message);
         }
-        
+
         return Task.CompletedTask;
     }
 }

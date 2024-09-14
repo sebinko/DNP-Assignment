@@ -13,7 +13,7 @@ public class UpdateUserView(IUserRepository userRepository) : IView
         {
             PrettyConsole.WriteQuestion("Enter user id:");
             var id = int.Parse(Console.ReadLine() ?? throw new Exception("Id cannot be null"));
-            
+
             var user = await userRepository.GetByIdAsync(id);
 
             PrettyConsole.WriteQuestion("Enter new username:");
@@ -21,11 +21,9 @@ public class UpdateUserView(IUserRepository userRepository) : IView
 
             PrettyConsole.WriteQuestion("Enter new password:");
             var password = Console.ReadLine();
-            
+
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            {
                 throw new Exception("Username and password cannot be null or empty");
-            }
 
             user.UserName = userName;
             user.Password = password;

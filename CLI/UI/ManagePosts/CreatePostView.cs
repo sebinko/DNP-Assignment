@@ -1,16 +1,18 @@
 using CLI.UI.Utilities;
 using Domain;
-using Domain.Validation;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManagePosts;
 
-public class CreatePostView (IPostRepository postRepository, IUserRepository userRepository, ISubforumRepository subforumRepository) : IView
+public class CreatePostView(
+    IPostRepository postRepository,
+    IUserRepository userRepository,
+    ISubforumRepository subforumRepository) : IView
 {
     public async Task Run()
     {
         Console.Clear();
-        
+
         try
         {
             PrettyConsole.WriteQuestion("Title:");
@@ -21,15 +23,13 @@ public class CreatePostView (IPostRepository postRepository, IUserRepository use
 
             PrettyConsole.WriteQuestion("User ID:");
             var userId = int.Parse(Console.ReadLine() ?? throw new Exception("User ID is required"));
+            await userRepository.GetByIdAsync(userId);
 
             PrettyConsole.WriteQuestion("Subforum ID:");
             var subforumId = int.Parse(Console.ReadLine() ?? throw new Exception("Subforum ID is required"));
+            await subforumRepository.GetByIdAsync(subforumId);
 
-            PostValidation postValidation = new(userRepository, subforumRepository);
-            
-            await postValidation.ValidatePost(title, body, userId, subforumId);
-
-            await postRepository.AddAsync( new Post
+            await postRepository.AddAsync(new Post
             {
                 Title = title,
                 Body = body,
@@ -42,5 +42,4 @@ public class CreatePostView (IPostRepository postRepository, IUserRepository use
             PrettyConsole.WriteError(e.Message);
         }
     }
-
 }

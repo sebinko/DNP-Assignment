@@ -28,5 +28,5 @@ public class Like
             : throw new ArgumentException($"LikeableType must be either {string.Join(", ", LikeableTypes)}");
     }
 
-    public static List<String> LikeableTypes = new List<string> { typeof(Post).ToString(), typeof(Comment).ToString() };
+    public static List<string> LikeableTypes = [typeof(Post).ToString(), typeof(Comment).ToString()];
 }

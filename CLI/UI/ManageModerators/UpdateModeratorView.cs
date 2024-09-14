@@ -16,20 +16,14 @@ public class UpdateModeratorView(
             PrettyConsole.WriteInfo("Enter user id:");
             var userId = Console.ReadLine();
 
-            if (!int.TryParse(userId, out var moderatorUserId))
-            {
-                throw new Exception("Invalid user id");
-            }
+            if (!int.TryParse(userId, out var moderatorUserId)) throw new Exception("Invalid user id");
 
             await userRepository.GetByIdAsync(moderatorUserId);
 
             PrettyConsole.WriteInfo("Enter subforum id:");
             var subforumId = Console.ReadLine();
 
-            if (!int.TryParse(subforumId, out var moderatorSubforumId))
-            {
-                throw new Exception("Invalid subforum id");
-            }
+            if (!int.TryParse(subforumId, out var moderatorSubforumId)) throw new Exception("Invalid subforum id");
 
             await subforumRepository.GetByIdAsync(moderatorSubforumId);
 
@@ -38,10 +32,7 @@ public class UpdateModeratorView(
             PrettyConsole.WriteInfo("Enter new user id:");
             var newUserId = Console.ReadLine();
 
-            if (!int.TryParse(newUserId, out var newModeratorUserId))
-            {
-                throw new Exception("Invalid user id");
-            }
+            if (!int.TryParse(newUserId, out var newModeratorUserId)) throw new Exception("Invalid user id");
 
             await userRepository.GetByIdAsync(newModeratorUserId);
 
@@ -49,9 +40,7 @@ public class UpdateModeratorView(
             var newSubforumId = Console.ReadLine();
 
             if (!int.TryParse(newSubforumId, out var newModeratorSubforumId))
-            {
                 throw new Exception("Invalid subforum id");
-            }
 
             await subforumRepository.GetByIdAsync(newModeratorSubforumId);
 

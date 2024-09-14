@@ -22,5 +22,4 @@ public class DeleteLikeView(ILikeRepository likeRepository) : IView
             PrettyConsole.WriteError($"Error:{e.Message}");
         }
     }
-    
 }

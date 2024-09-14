@@ -19,7 +19,7 @@ public class ListSubforumView(ISubforumRepository subforumRepository) : IView
         {
             PrettyConsole.WriteError(e.Message);
         }
-        
+
         return Task.CompletedTask;
     }
 }

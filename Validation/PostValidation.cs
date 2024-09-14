@@ -2,6 +2,7 @@ using RepositoryContracts.Interfaces;
 
 namespace Domain.Validation;
 
+// TODO REMOVE THIS WHOLE , VERY BAD ( good for the future, but not right now)
 public class PostValidation (IUserRepository userRepository, ISubforumRepository subforumRepository)
 {
     private void ValidateTitle(string? title)

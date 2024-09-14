@@ -1,4 +1,3 @@
-using System.Drawing;
 using ConsoleTables;
 
 namespace CLI.UI.Utilities;
@@ -24,7 +23,7 @@ public class PrettyConsole
 
     public static void WriteInfo(string message)
     {
-        WriteLine(message,GetColor(Level.Info));
+        WriteLine(message, GetColor(Level.Info));
     }
 
     public static void WriteQuestion(string message)
@@ -45,9 +44,7 @@ public class PrettyConsole
         {
             var row = new List<string>();
             foreach (var attribute in dataAttributes)
-            {
                 row.Add(item.GetType().GetProperty(attribute).GetValue(item).ToString());
-            }
 
             table.AddRow(row.ToArray());
         }

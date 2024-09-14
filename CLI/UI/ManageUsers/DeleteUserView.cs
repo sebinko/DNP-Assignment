@@ -12,7 +12,7 @@ public class DeleteUserView(IUserRepository userRepository) : IView
         try
         {
             PrettyConsole.WriteQuestion("Enter user id:");
-            
+
             var id = int.Parse(Console.ReadLine() ?? throw new Exception("Id cannot be null"));
             var user = await userRepository.GetByIdAsync(id);
 

@@ -1,5 +1,4 @@
 using CLI.UI.Utilities;
-using Domain;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI.ManageLikes;
@@ -27,6 +26,5 @@ public class UpdateLikeView(ILikeRepository likeRepository) : IView
         {
             PrettyConsole.WriteError($"Error:{e.Message}");
         }
-
     }
 }
