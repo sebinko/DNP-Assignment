@@ -20,7 +20,7 @@ public class PostInMemoryRepository : IPostRepository
     
     public Task<Post> AddAsync(Post post)
     {
-        post.Id = posts.Count + 1;
+        post.Id = posts.Any() ? posts.Max(p => p.Id) + 1 : 1;
         
         post.CreatedAt = DateTime.Now;
         post.UpdatedAt = DateTime.Now;
@@ -60,6 +60,12 @@ public class PostInMemoryRepository : IPostRepository
     public Task<Post> GetByIdAsync(int id)
     {
         var post = posts.FirstOrDefault(p => p.Id == id);
+        
+        if(post == null)
+        {
+            throw new Exception("Post not found");
+        }
+        
         return Task.FromResult(post);
     }
     

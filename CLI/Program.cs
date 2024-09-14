@@ -1,4 +1,5 @@
 ﻿using CLI.UI;
+using CLI.UI.ManageLikes;
 using CLI.UI.ManageModerators;
 using CLI.UI.ManagePosts;
 using CLI.UI.ManageSubforums;
@@ -31,6 +32,10 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<ListModeratorView>()
     .AddSingleton<UpdateModeratorView>()
     .AddSingleton<DeleteModeratorView>()
+    .AddSingleton<ListLikeView>()
+    .AddSingleton<CreateLikeView>()
+    .AddSingleton<UpdateLikeView>()
+    .AddSingleton<DeleteLikeView>()
     .AddSingleton<ExitView>()
     .AddSingleton<CliApp>(provider => new CliApp(new Dictionary<string, IView>
     {
@@ -50,6 +55,10 @@ var serviceProvider = new ServiceCollection()
         { "14", provider.GetService<CreateModeratorView>() },
         { "15", provider.GetService<UpdateModeratorView>() },
         { "16", provider.GetService<DeleteModeratorView>() },
+        { "17", provider.GetService<ListLikeView>() },
+        { "18", provider.GetService<CreateLikeView>() },
+        { "19", provider.GetService<UpdateLikeView>() },
+        { "20", provider.GetService<DeleteLikeView>() },
         { "Q", provider.GetService<ExitView>() }
     }))
     .BuildServiceProvider();

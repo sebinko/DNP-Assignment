@@ -36,7 +36,7 @@ public class CommentInMemoryRepository: ICommentRepository
     
     public Task<Comment> AddAsync(Comment comment)
     {
-        comment.Id = comments.Count + 1;
+        comment.Id = comments.Any() ? comments.Max(c => c.Id) + 1 : 1;
         
         comment.CreatedAt = DateTime.Now;
         comment.UpdatedAt = DateTime.Now;

@@ -19,7 +19,7 @@ public class SubforumInMemoryRepository : ISubforumRepository
     
     public Task<Subforum> AddAsync(Subforum subforum)
     {
-        subforum.Id = subforums.Count + 1;
+        subforum.Id = subforums.Any() ? subforums.Max(s => s.Id) + 1 : 1;
         
         subforum.CreatedAt = DateTime.Now;
         subforum.UpdatedAt = DateTime.Now;

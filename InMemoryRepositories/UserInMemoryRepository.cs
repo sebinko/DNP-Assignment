@@ -18,7 +18,7 @@ public class UserInMemoryRepository : IUserRepository
     
     public Task<User> AddAsync(User user)
     {
-        user.Id = users.Count + 1;
+        user.Id = users.Any() ? users.Max(u => u.Id) + 1 : 1;
         
         user.CreatedAt = DateTime.Now;
         user.UpdatedAt = DateTime.Now;

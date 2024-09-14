@@ -14,6 +14,7 @@ public class LikeInMemoryRepository : ILikeRepository
             UserId = 1,
             LikeableType = typeof(Post).ToString(),
             LikeableId = 1,
+            Value = 1,
         });
             
         this.AddAsync(new Like
@@ -21,12 +22,13 @@ public class LikeInMemoryRepository : ILikeRepository
             UserId = 1,
             LikeableType = typeof(Comment).ToString(),
             LikeableId = 1,
+            Value = -1,
         });
     }
     
     public Task<Like> AddAsync(Like like)
     {
-        like.Id = likes.Count + 1;
+        like.Id = likes.Any() ? likes.Max(l => l.Id) + 1 : 1;
         
         like.CreatedAt = DateTime.Now;
         like.UpdatedAt = DateTime.Now;
