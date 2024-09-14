@@ -11,7 +11,6 @@
         <ProjectReference Include="..\Domain\Domain.csproj"/>
         <ProjectReference Include="..\InMemoryRepositories\InMemoryRepositories.csproj"/>
         <ProjectReference Include="..\RepositoryContracts\RepositoryContracts.csproj"/>
-        <ProjectReference Include="..\Validation\Validation.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
