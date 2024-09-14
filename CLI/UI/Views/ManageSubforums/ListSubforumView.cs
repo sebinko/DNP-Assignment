@@ -1,9 +1,9 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageModerators;
+namespace CLI.UI.Views.ManageSubforums;
 
-public class ListModeratorView(IModeratorRepository moderatorRepository) : IView
+public class ListSubforumView(ISubforumRepository subforumRepository) : IView
 {
     public Task Run()
     {
@@ -11,9 +11,9 @@ public class ListModeratorView(IModeratorRepository moderatorRepository) : IView
         {
             Console.Clear();
 
-            var moderators = moderatorRepository.GetAll();
+            var subforums = subforumRepository.GetAll();
 
-            PrettyConsole.PrintTable(moderators.ToList(), Level.Success);
+            PrettyConsole.PrintTable(subforums.ToList(), Level.Success);
         }
         catch (Exception e)
         {

@@ -1,7 +1,7 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageUsers;
+namespace CLI.UI.Views.ManageUsers;
 
 public class UpdateUserView(IUserRepository userRepository) : IView
 {

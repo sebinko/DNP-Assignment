@@ -1,7 +1,7 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManagePosts;
+namespace CLI.UI.Views.ManagePosts;
 
 public class UpdatePostView(
     IPostRepository postRepository,

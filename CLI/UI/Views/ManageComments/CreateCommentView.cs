@@ -2,7 +2,7 @@ using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageComments;
+namespace CLI.UI.Views.ManageComments;
 
 public class CreateCommentView(
     ICommentRepository commentRepository,

@@ -1,4 +1,4 @@
-namespace CLI.UI;
+namespace CLI.UI.Views;
 
 public interface IView
 {

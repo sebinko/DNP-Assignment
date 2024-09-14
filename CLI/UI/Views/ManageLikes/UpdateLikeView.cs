@@ -1,9 +1,9 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageLikes;
+namespace CLI.UI.Views.ManageLikes;
 
-public class DeleteLikeView(ILikeRepository likeRepository) : IView
+public class UpdateLikeView(ILikeRepository likeRepository) : IView
 {
     public async Task Run()
     {
@@ -15,7 +15,12 @@ public class DeleteLikeView(ILikeRepository likeRepository) : IView
             var likeId = int.Parse(Console.ReadLine());
             var like = await likeRepository.GetByIdAsync(likeId);
 
-            await likeRepository.DeleteAsync(like);
+            Console.WriteLine("Enter value (1 or -1):");
+            var value = int.Parse(Console.ReadLine());
+
+            like.Value = value;
+
+            await likeRepository.UpdateAsync(like);
         }
         catch (Exception e)
         {

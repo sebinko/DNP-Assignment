@@ -2,7 +2,7 @@ using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManagePosts;
+namespace CLI.UI.Views.ManagePosts;
 
 public class CreatePostView(
     IPostRepository postRepository,

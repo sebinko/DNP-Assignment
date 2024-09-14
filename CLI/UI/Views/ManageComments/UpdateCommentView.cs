@@ -1,7 +1,7 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageComments;
+namespace CLI.UI.Views.ManageComments;
 
 public class UpdateCommentView(ICommentRepository commentRepository) : IView
 {

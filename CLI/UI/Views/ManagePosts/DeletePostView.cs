@@ -1,9 +1,9 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageUsers;
+namespace CLI.UI.Views.ManagePosts;
 
-public class DeleteUserView(IUserRepository userRepository) : IView
+public class DeletePostView(IPostRepository postRepository) : IView
 {
     public async Task Run()
     {
@@ -11,12 +11,12 @@ public class DeleteUserView(IUserRepository userRepository) : IView
 
         try
         {
-            PrettyConsole.WriteQuestion("Enter user id:");
+            PrettyConsole.WriteQuestion("Enter post id:");
 
             var id = int.Parse(Console.ReadLine() ?? throw new Exception("Id cannot be null"));
-            var user = await userRepository.GetByIdAsync(id);
+            var post = await postRepository.GetByIdAsync(id);
 
-            await userRepository.DeleteAsync(user);
+            await postRepository.DeleteAsync(post);
         }
         catch (Exception e)
         {

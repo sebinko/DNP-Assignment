@@ -1,7 +1,7 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageSubforums;
+namespace CLI.UI.Views.ManageSubforums;
 
 public class DeleteSubforumView(ISubforumRepository subforumRepository) : IView
 {

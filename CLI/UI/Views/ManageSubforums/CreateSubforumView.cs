@@ -2,7 +2,7 @@ using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageSubforums;
+namespace CLI.UI.Views.ManageSubforums;
 
 public class CreateSubforumView(ISubforumRepository subforumRepository, IUserRepository userRepository) : IView
 {

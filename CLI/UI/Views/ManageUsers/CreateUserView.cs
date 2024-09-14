@@ -2,7 +2,7 @@ using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageUsers;
+namespace CLI.UI.Views.ManageUsers;
 
 public class CreateUserView(IUserRepository userRepository) : IView
 {

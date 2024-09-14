@@ -2,7 +2,7 @@ using CLI.UI.Utilities;
 using Domain;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageLikes;
+namespace CLI.UI.Views.ManageLikes;
 
 public class CreateLikeView(
     ILikeRepository likeRepository,

@@ -1,9 +1,9 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageSubforums;
+namespace CLI.UI.Views.ManagePosts;
 
-public class ListSubforumView(ISubforumRepository subforumRepository) : IView
+public class ListPostView(IPostRepository postRepository) : IView
 {
     public Task Run()
     {
@@ -11,9 +11,9 @@ public class ListSubforumView(ISubforumRepository subforumRepository) : IView
         {
             Console.Clear();
 
-            var subforums = subforumRepository.GetAll();
+            var posts = postRepository.GetAll();
 
-            PrettyConsole.PrintTable(subforums.ToList(), Level.Success);
+            PrettyConsole.PrintTable(posts.ToList(), Level.Success);
         }
         catch (Exception e)
         {

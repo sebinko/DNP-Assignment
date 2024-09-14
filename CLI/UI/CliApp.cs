@@ -1,5 +1,6 @@
 using CLI.UI.Menu;
 using CLI.UI.Utilities;
+using CLI.UI.Views;
 using ConsoleTables;
 
 namespace CLI.UI;

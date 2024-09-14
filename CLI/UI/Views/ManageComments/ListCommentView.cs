@@ -1,9 +1,9 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageLikes;
+namespace CLI.UI.Views.ManageComments;
 
-public class ListLikeView(ILikeRepository likeRepository) : IView
+public class ListCommentView(ICommentRepository commentRepository) : IView
 {
     public async Task Run()
     {
@@ -11,9 +11,9 @@ public class ListLikeView(ILikeRepository likeRepository) : IView
         {
             Console.Clear();
 
-            var likes = likeRepository.GetAll();
+            var comments = commentRepository.GetAll();
 
-            PrettyConsole.PrintTable(likes.ToList(), Level.Success);
+            PrettyConsole.PrintTable(comments.ToList(), Level.Success);
         }
         catch (Exception e)
         {

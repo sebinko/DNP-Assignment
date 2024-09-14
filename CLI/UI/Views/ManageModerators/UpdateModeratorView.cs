@@ -1,7 +1,7 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManageModerators;
+namespace CLI.UI.Views.ManageModerators;
 
 public class UpdateModeratorView(
     IModeratorRepository moderatorRepository,
