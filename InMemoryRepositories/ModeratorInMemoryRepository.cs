@@ -9,7 +9,7 @@ public class ModeratorInMemoryRepository : IModeratorRepository
     
     public ModeratorInMemoryRepository()
     {
-        this.AddAsync(new Moderator
+        AddAsync(new Moderator
         {
             UserId = 1,
             SubforumId= 1,
@@ -18,20 +18,27 @@ public class ModeratorInMemoryRepository : IModeratorRepository
     
     public Task<Moderator> AddAsync(Moderator moderator)
     {
+        if (moderators.FirstOrDefault(m => m.UserId == moderator.UserId && m.SubforumId == moderator.SubforumId) != null)
+        {
+            throw new Exception("This user is already a moderator of this subforum");
+        }
+        
         moderators.Add(moderator);
         return Task.FromResult(moderator);
     }
-    
+
+
     public Task<Moderator> UpdateAsync(Moderator moderator)
     {
         var existingModerator = moderators.FirstOrDefault(m => m.UserId == moderator.UserId && m.SubforumId == moderator.SubforumId);
-        if (existingModerator == null)
+
+        if (existingModerator != null && (existingModerator.UserId != moderator.UserId || existingModerator.SubforumId != moderator.SubforumId))
         {
-            throw new Exception("Moderator not found");
+            throw new Exception("This user is already a moderator of this subforum");
         }
-        
+
         moderators[moderators.FindIndex(m => m.UserId == moderator.UserId && m.SubforumId == moderator.SubforumId)] = moderator;
-        
+
         return Task.FromResult(moderator);
     }
     
@@ -57,5 +64,10 @@ public class ModeratorInMemoryRepository : IModeratorRepository
     public IQueryable<Moderator> GetAll()
     {
         return moderators.AsQueryable();
+    }
+    
+    private void CheckIfModeratorExists(Moderator moderator)
+    {
+     
     }
 }

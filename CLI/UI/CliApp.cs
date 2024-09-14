@@ -2,19 +2,13 @@ using CLI.UI.ManagePosts;
 using CLI.UI.ManageUsers;
 using CLI.UI.Menu;
 using CLI.UI.Utilities;
+using ConsoleTables;
 using RepositoryContracts.Interfaces;
 
 namespace CLI.UI;
 
-public class CliApp
+public class CliApp(Dictionary<string, IView> views)
 {
-    private readonly Dictionary<string, IView> _views;
-
-    public CliApp(Dictionary<string, IView> views)
-    {
-        _views = views;
-    }
-
     public async Task StartAsync()
     {
         var exit = false;
@@ -27,7 +21,7 @@ public class CliApp
 
             var choice = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(choice) && _views.TryGetValue(choice, out var view))
+            if (!string.IsNullOrEmpty(choice) && views.TryGetValue(choice, out var view))
             {
                 await view.Run();
 
@@ -46,11 +40,30 @@ public class CliApp
 
     private void PrintMenu()
     {
-        foreach (var view in _views)
+        var table = new ConsoleTable("M", "E", "N", "U");
+        table.Options.EnableCount = false;
+        var views1 = views.ToList();
+        
+        for (int i = 0; i < views1.Count; i += 4)
         {
-            var viewName = ParseViewName(view.Value.GetType().Name);
-            PrettyConsole.WriteInfo($"{view.Key} - {viewName}");
+            var row = new List<string>();
+            for (int j = 0; j < 4; j++)
+            {
+                if (i + j < views1.Count)
+                {
+                    var view = views1[i + j];
+                    var viewName = ParseViewName(view.Value.GetType().Name);
+                    row.Add($"{view.Key} - {viewName}");
+                }
+                else
+                {
+                    row.Add("");
+                }
+            }
+            table.AddRow(row.ToArray());
         }
+        
+        table.Write(Format.Minimal);
     }
 
     private static string ParseViewName(string viewName)

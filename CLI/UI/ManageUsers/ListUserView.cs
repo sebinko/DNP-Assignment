@@ -7,16 +7,21 @@ public class ListUserView(IUserRepository userRepository) : IView
 {
     public Task Run()
     {
-        Console.Clear();
-        
-        var users = userRepository.GetAll();
-
-        foreach (var user in users)
+        try
         {
-            PrettyConsole.WriteSuccess(
-                $"Id: {user.Id}, Username: {user.UserName}, Password: {user.Password}, CreatedAt: {user.CreatedAt}, UpdatedAt: {user.UpdatedAt}");
-        }
+            Console.Clear();
 
+            var users = userRepository.GetAll();
+
+            PrettyConsole.PrintTable(users.ToList(), Level.Success);
+
+            return Task.CompletedTask;
+        }
+        catch (Exception exception)
+        {
+            PrettyConsole.WriteError(exception.Message);
+        }
+        
         return Task.CompletedTask;
     }
 }

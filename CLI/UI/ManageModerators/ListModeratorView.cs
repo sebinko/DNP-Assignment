@@ -1,25 +1,25 @@
 using CLI.UI.Utilities;
 using RepositoryContracts.Interfaces;
 
-namespace CLI.UI.ManagePosts;
+namespace CLI.UI.ManageModerators;
 
-public class ListPostView(IPostRepository postRepository) : IView
+public class ListModeratorView(IModeratorRepository moderatorRepository) : IView
 {
     public Task Run()
     {
         try
         {
             Console.Clear();
-        
-            var posts = postRepository.GetAll();
 
-            PrettyConsole.PrintTable(posts.ToList(), Level.Success);
+            var moderators = moderatorRepository.GetAll();
+
+            PrettyConsole.PrintTable(moderators.ToList(), Level.Success);
         }
         catch (Exception e)
         {
             PrettyConsole.WriteError(e.Message);
         }
-
+        
         return Task.CompletedTask;
     }
 }

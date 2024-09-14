@@ -5,7 +5,7 @@ namespace CLI.UI.ManageSubforums;
 
 public class ListSubforumView(ISubforumRepository subforumRepository) : IView
 {
-    public async Task Run()
+    public Task Run()
     {
         try
         {
@@ -13,15 +13,13 @@ public class ListSubforumView(ISubforumRepository subforumRepository) : IView
 
             var subforums = subforumRepository.GetAll();
 
-            foreach (var subforum in subforums)
-            {
-                PrettyConsole.WriteSuccess(
-                    $"Id: {subforum.Id}, Title: {subforum.Title}, Description: {subforum.Description}, OwnerUserId: {subforum.OwnerUserId}, CreatedAt: {subforum.CreatedAt}, UpdatedAt: {subforum.UpdatedAt}");
-            }
+            PrettyConsole.PrintTable(subforums.ToList(), Level.Success);
         }
         catch (Exception e)
         {
             PrettyConsole.WriteError(e.Message);
         }
+        
+        return Task.CompletedTask;
     }
 }

@@ -2,6 +2,6 @@ namespace Domain;
 
 public class Moderator
 {
-    public int UserId { get; set; }
-    public int SubforumId { get; set; }
+    public required int UserId { get; set; }
+    public required int SubforumId { get; set; }
 }

@@ -1,4 +1,5 @@
 ﻿using CLI.UI;
+using CLI.UI.ManageModerators;
 using CLI.UI.ManagePosts;
 using CLI.UI.ManageSubforums;
 using CLI.UI.ManageUsers;
@@ -26,6 +27,10 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<ListSubforumView>()
     .AddSingleton<UpdateSubforumView>()
     .AddSingleton<DeleteSubforumView>()
+    .AddSingleton<CreateModeratorView>()
+    .AddSingleton<ListModeratorView>()
+    .AddSingleton<UpdateModeratorView>()
+    .AddSingleton<DeleteModeratorView>()
     .AddSingleton<ExitView>()
     .AddSingleton<CliApp>(provider => new CliApp(new Dictionary<string, IView>
     {
@@ -41,6 +46,10 @@ var serviceProvider = new ServiceCollection()
         { "10", provider.GetService<CreateSubforumView>() },
         { "11", provider.GetService<UpdateSubforumView>() },
         { "12", provider.GetService<DeleteSubforumView>() },
+        { "13", provider.GetService<ListModeratorView>() },
+        { "14", provider.GetService<CreateModeratorView>() },
+        { "15", provider.GetService<UpdateModeratorView>() },
+        { "16", provider.GetService<DeleteModeratorView>() },
         { "Q", provider.GetService<ExitView>() }
     }))
     .BuildServiceProvider();
