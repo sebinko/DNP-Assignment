@@ -7,6 +7,7 @@ using CLI.UI.Views.ManageModerators;
 using CLI.UI.Views.ManagePosts;
 using CLI.UI.Views.ManageSubforums;
 using CLI.UI.Views.ManageUsers;
+using CLI.UI.Views.SingleEntities;
 using InMemoryRepositories;
 using Microsoft.Extensions.DependencyInjection;
 using RepositoryContracts.Interfaces;
@@ -42,6 +43,7 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<ListCommentView>()
     .AddSingleton<UpdateCommentView>()
     .AddSingleton<DeleteCommentView>()
+    .AddSingleton<SinglePostView>()
     .AddSingleton<ExitView>()
     .AddSingleton<CliApp>(provider => new CliApp(new Dictionary<string, IView>
     {
@@ -69,6 +71,7 @@ var serviceProvider = new ServiceCollection()
         { "22", provider.GetService<CreateCommentView>() },
         { "23", provider.GetService<UpdateCommentView>() },
         { "24", provider.GetService<DeleteCommentView>() },
+        { "25", provider.GetService<SinglePostView>() },
         { "Q", provider.GetService<ExitView>() }
     }))
     .BuildServiceProvider();
