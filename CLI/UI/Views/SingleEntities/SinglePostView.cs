@@ -62,14 +62,15 @@ public class SinglePostView(
     private async Task DisplayOwner()
     {
         var user = await userRepository.GetByIdAsync(_post.UserId);
-        PrettyConsole.WriteSuccess($"Owner:");
+        PrettyConsole.WriteSuccess("Owner:");
         PrettyConsole.WriteInfo($"\tID: {user.Id}");
         PrettyConsole.WriteInfo($"\tUsername: {user.UserName}");
     }
 
     private async Task DisplayLikes()
     {
-        var likes = likeRepository.GetAll().Count(l => l.LikeableId == _post.Id && l.LikeableType == typeof(Post).ToString());
+        var likes = likeRepository.GetAll()
+            .Count(l => l.LikeableId == _post.Id && l.LikeableType == typeof(Post).ToString());
         PrettyConsole.WriteSuccess($"Likes: {likes}");
     }
 
@@ -81,10 +82,7 @@ public class SinglePostView(
         if (comments.Any())
         {
             PrettyConsole.WriteSuccess($"Comments ({comments.Count}):");
-            foreach (var comment in comments)
-            {
-                await DisplayComment(comment, 0);
-            }
+            foreach (var comment in comments) await DisplayComment(comment, 0);
         }
     }
 
@@ -92,7 +90,8 @@ public class SinglePostView(
     {
         var user = await userRepository.GetByIdAsync(comment.UserId);
         var indent = new string('\t', level);
-        var likes = likeRepository.GetAll().Count(l => l.LikeableId == comment.Id && l.LikeableType == typeof(Comment).ToString());
+        var likes = likeRepository.GetAll()
+            .Count(l => l.LikeableId == comment.Id && l.LikeableType == typeof(Comment).ToString());
         PrettyConsole.WriteInfo($"{indent}ID: {comment.Id}");
         PrettyConsole.WriteInfo($"{indent}Body: {comment.Body}");
         PrettyConsole.WriteInfo($"{indent}User: {user.UserName}");
@@ -101,9 +100,6 @@ public class SinglePostView(
         var nestedComments = commentRepository.GetAll()
             .Where(c => c.CommentableId == comment.Id && c.CommentableType == typeof(Comment).ToString()).ToList();
 
-        foreach (var nestedComment in nestedComments)
-        {
-            await DisplayComment(nestedComment, level + 1);
-        }
+        foreach (var nestedComment in nestedComments) await DisplayComment(nestedComment, level + 1);
     }
 }

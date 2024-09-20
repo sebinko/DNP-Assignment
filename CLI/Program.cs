@@ -8,17 +8,18 @@ using CLI.UI.Views.ManagePosts;
 using CLI.UI.Views.ManageSubforums;
 using CLI.UI.Views.ManageUsers;
 using CLI.UI.Views.SingleEntities;
+using FileRepositories;
 using InMemoryRepositories;
 using Microsoft.Extensions.DependencyInjection;
 using RepositoryContracts.Interfaces;
 
 var serviceProvider = new ServiceCollection()
-    .AddSingleton<ICommentRepository, CommentInMemoryRepository>()
-    .AddSingleton<ILikeRepository, LikeInMemoryRepository>()
-    .AddSingleton<IModeratorRepository, ModeratorInMemoryRepository>()
-    .AddSingleton<IPostRepository, PostInMemoryRepository>()
-    .AddSingleton<ISubforumRepository, SubforumInMemoryRepository>()
-    .AddSingleton<IUserRepository, UserInMemoryRepository>()
+    .AddSingleton<ICommentRepository, CommentFileRepository>()
+    .AddSingleton<ILikeRepository, LikeFileRepository>()
+    .AddSingleton<IModeratorRepository, ModeratorFileRepository>()
+    .AddSingleton<IPostRepository, PostFileRepository>()
+    .AddSingleton<ISubforumRepository, SubforumFileRepository>()
+    .AddSingleton<IUserRepository, UserFileRepository>()
     .AddSingleton<ListUserView>()
     .AddSingleton<CreateUserView>()
     .AddSingleton<UpdateUserView>()

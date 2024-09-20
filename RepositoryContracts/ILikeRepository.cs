@@ -9,5 +9,4 @@ public interface ILikeRepository
     public Task<Like> DeleteAsync(Like like);
     public Task<Like> GetByIdAsync(int id);
     public IQueryable<Like> GetAll();
-    
 }

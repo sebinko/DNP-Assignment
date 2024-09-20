@@ -2,9 +2,12 @@ namespace Domain;
 
 public class Like
 {
-    public int Id { get; set; }
+    public static List<string> LikeableTypes = [typeof(Post).ToString(), typeof(Comment).ToString()];
+
+    private string _likeableType;
 
     private int _value;
+    public int Id { get; set; }
 
     public required int Value
     {
@@ -18,8 +21,6 @@ public class Like
     public required int UserId { get; set; }
     public required int LikeableId { get; set; }
 
-    private string _likeableType;
-
     public required string LikeableType
     {
         get => _likeableType;
@@ -27,6 +28,4 @@ public class Like
             ? value
             : throw new ArgumentException($"LikeableType must be either {string.Join(", ", LikeableTypes)}");
     }
-
-    public static List<string> LikeableTypes = [typeof(Post).ToString(), typeof(Comment).ToString()];
 }
