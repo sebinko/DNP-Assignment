@@ -85,7 +85,7 @@ public class PostFileRepository : IPostRepository
 
     private async Task ReadFileAsync()
     {
-        if (!File.Exists("_moderators.json")) return;
+        if (!File.Exists("posts.json")) return;
 
         _posts = JsonSerializer.Deserialize<HashSet<Post>>(await File.ReadAllTextAsync("posts.json"));
     }

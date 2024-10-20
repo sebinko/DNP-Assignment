@@ -84,12 +84,12 @@ public class ModeratorFileRepository : IModeratorRepository
 
     private async Task WriteFileAsync()
     {
-        await File.WriteAllTextAsync("posts.json", JsonSerializer.Serialize(_moderators));
+        await File.WriteAllTextAsync("moderators.json", JsonSerializer.Serialize(_moderators));
     }
 
     private async Task ReadFileAsync()
     {
-        if (!File.Exists("_moderators.json")) return;
+        if (!File.Exists("moderators.json")) return;
 
         _moderators = JsonSerializer.Deserialize<HashSet<Moderator>>(await File.ReadAllTextAsync("posts.json"));
     }

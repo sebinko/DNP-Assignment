@@ -1,5 +1,6 @@
 using Domain;
 using RepositoryContracts.Interfaces;
+using SharedLib.Exceptions;
 
 namespace InMemoryRepositories;
 
@@ -36,6 +37,8 @@ public class SubforumInMemoryRepository : ISubforumRepository
         subforum.UpdatedAt = DateTime.Now;
 
         subforums[subforums.FindIndex(s => s.Id == subforum.Id)] = subforum;
+        
+        Console.WriteLine(subforum.Title);
 
         return Task.FromResult(subforum);
     }
@@ -54,7 +57,7 @@ public class SubforumInMemoryRepository : ISubforumRepository
     {
         var subforum = subforums.FirstOrDefault(s => s.Id == id);
 
-        if (subforum == null) throw new Exception("Subforum not found");
+        if (subforum == null) throw new NotFoundException(typeof(Subforum));
 
 
         return Task.FromResult(subforum);

@@ -79,12 +79,12 @@ public class SubforumFileRepository : ISubforumRepository
 
     private async Task WriteFileAsync()
     {
-        await File.WriteAllTextAsync("moderators.json", JsonSerializer.Serialize(_subforums));
+        await File.WriteAllTextAsync("subforums.json", JsonSerializer.Serialize(_subforums));
     }
 
     private async Task ReadFileAsync()
     {
-        if (!File.Exists("moderators.json")) return;
+        if (!File.Exists("subforums.json")) return;
 
         _subforums = JsonSerializer.Deserialize<HashSet<Subforum>>(await File.ReadAllTextAsync("moderators.json"));
     }
